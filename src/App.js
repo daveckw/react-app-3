@@ -1,14 +1,28 @@
 import React from 'react';
 import './App.css';
-import Table from './Components/tableComponent'
-import Form from './Components/formComponent'
+import UserTable from './Components/usersTableComponent'
+import ProjectTable from './Components/projectsTableComponent'
+import UserForm from './Components/usersFormComponent'
+import Form from './Components/FormComponent'
+import ProjectForm from './Components/projectsFormComponent'
+
 
 function App() {
   return (
     <div className="App">
       <h1>My React</h1>
-      <Table />
-      <Form />
+      <UserTable />
+      <UserForm />
+      <ProjectTable />
+      <ProjectForm />
+      <Form 
+        documentFields = {{
+          name: '',
+          created: '',
+          comm: ''
+        }}
+        collection = "commissionStructure"
+        />
     </div>
   );
 }

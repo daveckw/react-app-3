@@ -1,13 +1,18 @@
 import React from 'react';
-import {createDocument} from '../store/actions/documentActions';
+import {createProject} from '../store/actions/projectActions';
 import { connect } from 'react-redux';
 import FormInput from './formInputComponent'
 
-class Form extends React.Component {
-    constructor(props){
+class ProjectForm extends React.Component {
+    constructor(){
     super()
-    this.state = props.documentFields;
-        
+    this.state = {
+       eID : '',
+       name : '',
+       location : '',
+       created : '',
+       updated : ''
+        }
     }
 
     handleChange = (event) => {
@@ -20,8 +25,11 @@ class Form extends React.Component {
     
     handleSubmit = (event) => {
         event.preventDefault();
-        console.log(this.props.collection)
-        this.props.createDocument(this.state, this.props.collection);
+        // for (let key in this.state){
+        //     console.log(key, this.state[key])
+            
+        // } 
+        this.props.createProject(this.state);
         Object.keys(this.state).map((key)=>{
             this.setState({
             [key]: ''
@@ -62,8 +70,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        createDocument: (doc, collection) => dispatch(createDocument(doc, collection))
+        createProject: (project) => dispatch(createProject(project))
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Form)
+export default connect(mapStateToProps, mapDispatchToProps)(ProjectForm)

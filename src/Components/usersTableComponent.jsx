@@ -4,7 +4,7 @@ import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 import {deleteUser} from '../store/actions/userActions';
 
-class Table extends React.Component {
+class UserTable extends React.Component {
 
     handleClick = (event) => {
         event.preventDefault();
@@ -54,4 +54,4 @@ export default compose(
     firestoreConnect([
         { collection: 'users', orderBy: ['name', 'desc'] }
     ])
-)(Table)
+)(UserTable)

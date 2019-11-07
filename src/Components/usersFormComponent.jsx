@@ -1,13 +1,26 @@
 import React from 'react';
-import {createDocument} from '../store/actions/documentActions';
+import {createUser} from '../store/actions/userActions';
 import { connect } from 'react-redux';
 import FormInput from './formInputComponent'
 
-class Form extends React.Component {
-    constructor(props){
+class UserForm extends React.Component {
+    constructor(){
     super()
-    this.state = props.documentFields;
-        
+    this.state = {
+        eID: '',
+        name: '',
+        preferredName: '',
+        position: '',
+        icNumber: '',
+        email: '',
+        phoneNumber: '',
+        birthday: '',
+        immediateUpline: '',
+        referrer: '',
+        location: '',
+        created: '',
+        updated: ''
+        }
     }
 
     handleChange = (event) => {
@@ -20,8 +33,10 @@ class Form extends React.Component {
     
     handleSubmit = (event) => {
         event.preventDefault();
-        console.log(this.props.collection)
-        this.props.createDocument(this.state, this.props.collection);
+        // for (let key in this.state){
+        //     console.log(key, this.state[key])
+        // } 
+        this.props.createUser(this.state);
         Object.keys(this.state).map((key)=>{
             this.setState({
             [key]: ''
@@ -62,8 +77,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        createDocument: (doc, collection) => dispatch(createDocument(doc, collection))
+        createUser: (user) => dispatch(createUser(user))
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Form)
+export default connect(mapStateToProps, mapDispatchToProps)(UserForm)

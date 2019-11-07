@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "css-loader": "^3.2.0",
     "firebase": "^5.3.0",
     "moment": "^2.22.2",
     "react": "^16.4.1",
@@ -26,9 +27,8 @@
   },
   "browserslist": {
     "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
+      ">0.2%"
+      
     ],
     "development": [
       "last 1 chrome version",
@@ -37,3 +37,4 @@
     ]
   }
 }
+
