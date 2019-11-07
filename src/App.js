@@ -2,24 +2,45 @@ import React from 'react';
 import './App.css';
 import UserTable from './Components/usersTableComponent'
 import ProjectTable from './Components/projectsTableComponent'
-import UserForm from './Components/usersFormComponent'
 import Form from './Components/FormComponent'
-import ProjectForm from './Components/projectsFormComponent'
-
 
 function App() {
   return (
     <div className="App">
       <h1>My React</h1>
       <UserTable />
-      <UserForm />
+      <Form 
+        documentFields = {{
+          eID: '',
+          name: '',
+          preferredName: '',
+          position: '',
+          icNumber: '',
+          email: '',
+          phoneNumber: '',
+          birthday: '',
+          immediateUpline: '',
+          referrer: '',
+          location: '',
+          updated: ''
+        }}
+        collection="users"
+      />
       <ProjectTable />
-      <ProjectForm />
+      <Form 
+        documentFields = {{
+          eID : '',
+          name : '',
+          location : '',
+          updated : ''
+        }}
+        collection="projects"
+      />
       <Form 
         documentFields = {{
           name: '',
-          created: '',
-          comm: ''
+          comm: '',
+          effectiveDate: ''
         }}
         collection = "commissionStructure"
         />

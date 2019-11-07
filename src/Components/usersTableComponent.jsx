@@ -2,15 +2,19 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
-import {deleteUser} from '../store/actions/userActions';
+import {deleteDocument} from '../store/actions/documentActions';
 
 class UserTable extends React.Component {
-
+    constructor(props){
+        super()
+        
+    }
+    
     handleClick = (event) => {
         event.preventDefault();
         const userID = event.target.getAttribute("data-index"); //get user ID
         console.log("Delete Button clicked", userID);
-        this.props.deleteUser(userID);
+        this.props.deleteDocument(userID, "users");
     }
 
     render(){
@@ -45,7 +49,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        deleteUser: (userID) => dispatch(deleteUser(userID))
+        deleteDocument: (docID, collection) => dispatch(deleteDocument(docID, collection))
     }
 }
 
