@@ -1,6 +1,6 @@
 export const createDocument = (doc, collection) => {
-    return (dispatch, getState, {getFirestore}) => {
-        const firestore = getFirestore();
+    return (dispatch, getState, getFirebase) => {
+        const firestore = getFirebase();
         firestore.collection(`${collection}`).add({
             ...doc,
             createdAt: new Date()

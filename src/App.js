@@ -3,6 +3,7 @@ import './App.css';
 import UserTable from './Components/usersTableComponent'
 import ProjectTable from './Components/projectsTableComponent'
 import Form from './Components/FormComponent'
+import Table from './Components/TableComponent'
 
 function App() {
   return (
@@ -36,6 +37,10 @@ function App() {
         }}
         collection="projects"
       />
+      <Table
+        items="commissionStructure"
+        itemToDisplay = ""
+        />
       <Form 
         documentFields = {{
           name: '',

@@ -2,6 +2,7 @@ import React from 'react';
 import {createDocument} from '../store/actions/documentActions';
 import { connect } from 'react-redux';
 import FormInput from './formInputComponent'
+import { useFirestore } from 'react-redux-firebase'
 
 class Form extends React.Component {
     constructor(props){
@@ -21,7 +22,8 @@ class Form extends React.Component {
     handleSubmit = (event) => {
         event.preventDefault();
         console.log(this.props.collection)
-        this.props.createDocument(this.state, this.props.collection);
+        // this.props.createDocument(this.state, this.props.collection);
+        saveToFirestore(this.props.collection, this.props);
         Object.keys(this.state).map((key)=>{
             this.setState({
             [key]: ''
@@ -52,6 +54,11 @@ class Form extends React.Component {
             </div>
         )
     }
+}
+
+function saveToFirestore(collection, doc){
+    const firestore = useFirestore();
+    firestore.collection(`${collection}`).add(doc);
 }
 
 const mapStateToProps = (state) => {
